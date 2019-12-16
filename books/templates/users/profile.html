@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row">
+  <div class="container">
+    <style type="text/css">
+      #hint_id_username{
+        display: none;
+      }
+      .form-section{
+      padding: 4% 10%;
+      width: 68%;
+      min-width: 430px;
+      height: 500px;
+      box-shadow: 0 2px 10px rgba(51,51,51,.2);
+      border: 1px solid #e3e3e3;
+      border-radius: 3px;
+      margin: 64px auto;
+      background: linear-gradient(#fff,#E8E7E7);
+    }
+      #id_email{
+      margin: 10px 0 5px 0;
+      display: block;
+      width: 100%;
+      height: calc(2.25rem + 2px);
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      border: 1px solid #ced4da;
+      border-radius: .25rem;
+      transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+      }
+      .textinput.textInput{
+      display: block;
+      width: 100%;
+      height: calc(2.25rem + 2px);
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      border: 1px solid #ced4da;
+      border-radius: .25rem;
+      transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+      }
+      .butt{
+      border: 1px solid silver;
+      border-radius: 4px;
+      width: 149px;
+      height: 41px;
+      font-size: 13px;
+      background: #EBEBEB!important;
+      
+      }
+      .control-label.requiredField{
+      	display: none;
+      }
+      .dropDiv{
+        display: none;
+      }
+      .frst-div{
+        display: none;
+      }
+    </style>
+         
+
+	<div class="form-section mt-4">
+    <h3>Кабинет пользователя</h3>
+    <div class="media text-muted pt-3">
+        <img class=" mr-2 rounded" style="width:64px; height:64px; border-radius: 4px !important;" src="{{ user.profile.img.url }}">
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <strong class="d-block text-gray-dark">{{ user.username }}</strong>
+         <b> Email: </b> {{ user.email }}
+        </p>
+      </div>
+        <h4 class="mt-2">Изменить данные про пользователя</h4>
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ update_user|crispy }}
+        {{ img_profile|crispy }}
+
+      <button type="submit" class="butt mt-3">Обновить данные</button>
+    </form>
+  
+	</div>
+
+  </div>
+</div>
+<div class="myFooter">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-sm-2">
+        <p></p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <p>Сотрудничество</p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <p>Что почитать?</p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2"></div>
+
+      <div class="col-sm-2">
+        <p></p>
+        <a href="#"><img src="{% static 'img/playmarket.svg' %}"></a>
+      </div>
+
+      <div class="col-sm-2">
+        <p></p>
+        <a href="#"><img src="{% static 'img/appstore.svg' %}"></a>
+      </div>
+
+      <!--         new        -->
+
+      <div class="col-sm-2"></div>
+
+      <div class="col-sm-2">
+        <p>Помощь</p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <p>Мы в соцсетях</p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <p></p>
+        <ul>
+          <li><a href="#">Вопрос ответ</a></li>
+          <li><a href="#">Напишите нам</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2"></div>
+
+      <div class="col-sm-2">
+        <p></p>
+      </div>
+
+    </div>
+  </div>
+  <footer class="miniFooter"></footer>
+</div>
+
+
+{% endblock %}
+
+
+
+	

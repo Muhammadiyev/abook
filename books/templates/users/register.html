@@ -1,0 +1,294 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{ title }}</title>
+  <link rel="stylesheet"
+   href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet"  href="{% static 'css/main.css'%}">
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/font-awesome.css">
+  <script type="text/javascript" src="{% static 'js/popper.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/vendor.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/indexRank.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/jquery.cookie.js' %}"></script>
+ <script type="text/javascript" src="{% static 'js/audio.min.js' %}"></script>
+</head>
+<body>
+
+<div class="row myNav" >
+
+
+  <section class="onNav">
+    <div class="container">
+      <div class="join">
+          <ul>
+            <li><div>Uz</div></li>
+            <li class="border_none"><div>Ru</div></li>
+            <li><div class="btn-group" id="mar_0" role="group">
+                <button id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Войти</button>
+                <div class="dropdown-menu position_drop" onclick="event.stopPropagation()" aria-labelledby="btnGroupDrop1">
+                      
+                      <div class="flip-container" >
+                        <div class="flipper">
+                          <div class="front">
+                              <div class="myPolite LoginModal"  aria-atomic="true">
+                              <div class="myToast2 LoginModalIn2">
+
+                              <div class="flipButton action-button animate w-48 reg_click">
+                           
+                              </div >
+                              <p><a href="">Забыли пароль?</a></p>
+                              <p><a style="color: #F49342 !important;" href="{% url 'user' %}">Авторизация</p>
+                              <p>Авторизация через соц. сети</p>
+                              <button class="soc_set"><img src="{% static './img/facebook.svg' %}"></button>
+                              <button class="soc_set"><img src="{% static './img/Twitter.svg' %}"></button>
+                              <button class="soc_set"><img src="{% static './img/google.svg' %}"></button>
+                             </div>
+                             </div>   
+                          </div>
+
+                        </div>
+                      </div>
+
+                       
+                      </div>
+
+                  </div> 
+              </li>
+
+              <li id="mar_pad1">
+                <div class="btn-group" id="mar_0" role="group">
+                <button id="btnGroupDrop2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><div><img src="{% static 'img/korzinaTsvg.svg' %}">Корзинка <div class="count"><span>0</span></div></div></button>
+
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+                        <div class="myPolite Basket" aria-atomic="true">
+                          <div class="myToast BasketIn">
+                              Корзина
+                          </div>
+                          <div class="myToast2 BasketIn2">
+                            <p>В корзине 0 товара</p>
+                            <p><span>Общая сумма <br>заказа............
+                            <span class="orange">None</span></span>
+                              <p class="mar">Оплатить онлайн</p>
+                              <button type="submit" class="btn"><img class="k_23" src="{% static './img/visa.svg' %}"></button>
+                              <button type="submit" class="btn"><img class="k_23" src="{% static './img/mastercard.svg' %}"></button>
+
+                          </div>
+                        </div>
+
+                </div>
+              </div>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="row mainNav">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg mainNav navbar-dark">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="navbar-brand" href="#">
+              <a href="{% url 'home' %}">
+                <img class="imgLogo" src="{% static 'img/logo.png' %}">
+                <img class="imgLogoBook" src="{% static 'img/logoBook.png' %}">
+              </a>
+            </div>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <div class="w-100 ">
+              <div class="input-group mb-3">
+                <input type="text" placeholder="Поиск..." class="form-control">
+                <div class="input-group-append">
+                  <span class="input-group-text"><button><img src="{% static 'img/mark-search.png' %}"></button></span>
+                </div>
+              </div>
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                  <a class="nav-link" href="./main.html">Новости<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./main.html">Популярное</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./main.html">Новинки</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./main.html">Скоро</a>
+                </li>
+              </ul>
+              <div id="appendDrop2">
+                
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+  </div>
+
+</div>
+  <style type="text/css">
+  label{
+  	display: none;
+  }
+  .control-label.requiredField{
+    display: none;
+  }
+  #id_password1{
+    margin: 15px 0 15px 0;
+  }
+  #id_email{
+    margin-top: 15px;
+  }
+  .textinput.textInput{
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+  </style>
+
+<div class="row">
+  <div class="container">
+    <div class="row">
+      <div class="container">
+        <div class="Registration">
+          <div class="Registration_Content">
+                    <form method="POST">
+                      <p>Регистрация</p>
+                      <hr style="margin-top: 1rem; margin-bottom: 1rem; border: 0; border-top: 1px solid rgba(0,0,0,.1);">
+                      {% csrf_token %}
+                      {{ form|crispy }}
+                      <button class="btn btn-outline" style="background-color: transparent;"></button>
+                    </form>
+                <div class="capcha">
+                  <div><p>Капча</p></div>
+                  <div style="text-align: center;font-size: 16px;color: silver">this is block</div>
+                </div>
+                    <p><span>Авторизация через соц. сети</span></p>
+                    <button class="soc_set"><img src="{% static './img/facebook.svg' %}"></button>
+                    <button class="soc_set"><img src="{% static './img/twitter.svg' %}"></button>
+                    <button class="soc_set"><img src="{% static './img/google.svg' %}"></button>
+
+                
+          </div>
+        </div>
+      </div>
+    </div>
+         
+  </div>
+</div>
+<div class="myFooter">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-sm-2">
+        <p></p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <p>Сотрудничество</p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <p>Что почитать?</p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2"></div>
+
+      <div class="col-sm-2">
+        <p></p>
+        <a href="#"><img src="{% static 'img/playmarket.svg' %}"></a>
+      </div>
+
+      <div class="col-sm-2">
+        <p></p>
+        <a href="#"><img src="{% static 'img/appstore.svg' %}"></a>
+      </div>
+
+      <!--         new        -->
+
+      <div class="col-sm-2"></div>
+
+      <div class="col-sm-2">
+        <p>Помощь</p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <p>Мы в соцсетях</p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <p></p>
+        <ul>
+          <li><a href="#">Вопрос ответ</a></li>
+          <li><a href="#">Напишите нам</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2"></div>
+
+      <div class="col-sm-2">
+        <p></p>
+      </div>
+
+    </div>
+  </div>
+  <footer class="miniFooter"></footer>
+</div>
+
+
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
+
+
+
+	

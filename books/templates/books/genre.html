@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<div class="index">
+  <div class="container iDisFlex">
+    <div class="i-left-content"></div>
+    <div class="i-right-content">
+             
+        <script type="text/javascript">
+                      var i = 0;
+                      $('#aPodelitsyaSot').click(function(){
+                        if(i == 0){
+                          $('#sotSet').css({'visibility':'visible'});
+                          i = 1;
+                        }
+                        else{
+                          $('#sotSet').css({'visibility':'hidden'});
+                          i = 0;
+                        }
+                      })
+
+                   </script>
+        <style type="text/css">
+          .audiojs{
+            background: #F1F3F4;
+          }
+        </style>
+       
+        <div class="container">
+          <div class="mt-2" style="margin-left: 13px; font-size: 1.25rem; color: rgba(0,0,0,.55);">{{ book.genre }}</div>
+            <div class="row middle-content">
+               {% for post in books %}
+                  <div class="middle-content-element">
+                    <div class="middle-content-in">
+                      <img src="{{ post.img.url }}">
+                      <div class="mid-con-el-text">
+                        <p>{{ post.name }}</p>
+                        <p><span>{{ post.author }}</span></p>
+                        <button  class="btnn" onclick="location.href='/book/{{ post.id }}'">Читать</button> <span class="i">{{ post.price }} сум</span>
+                        <div class="mar_5 star-rating star-rating-mini-dis">
+                            <div class="star-value star-value-25"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              {% endfor %}
+            </div>
+            </div>
+    </div>
+  </div>
+</div>
+
+<div class="myFooter">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-sm-2">
+        <p></p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <p>Сотрудничество</p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <p>Что почитать?</p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2"></div>
+
+      <div class="col-sm-2">
+        <p></p>
+        <a href="#"><img src="{% static 'img/playmarket.svg' %}"></a>
+      </div>
+
+      <div class="col-sm-2">
+        <p></p>
+        <a href="#"><img src="{% static 'img/appstore.svg' %}"></a>
+      </div>
+
+      <!--         new        -->
+
+      <div class="col-sm-2"></div>
+
+      <div class="col-sm-2">
+        <p>Помощь</p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <p>Мы в соцсетях</p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <p></p>
+        <ul>
+          <li><a href="#">Вопрос ответ</a></li>
+          <li><a href="#">Напишите нам</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2"></div>
+
+      <div class="col-sm-2">
+        <p></p>
+      </div>
+
+    </div>
+  </div>
+  <footer class="miniFooter"></footer>
+</div>
+{% endblock %}

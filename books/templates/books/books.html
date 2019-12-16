@@ -1,0 +1,451 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+
+<div class="index">
+  <div class="container iDisFlex">
+    <div class="i-left-content"></div>
+    <div class="i-right-content">
+      <div class="modal fade" id="exampleModalElectron" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+      
+                  <div class="myPolite" aria-atomic="true">
+                    <div class="myToast">
+                        Купить без регистрации
+                    </div>
+                    <div class="myToast2">
+                      <p>ID заказа 12576780</p>
+                      <p><span>Время колоть лёд</span></p>
+                      <p>Сумма заказа <span class="orange">35 000</span></p>
+                      <form>
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Имя">
+                        </div>
+                        <div class="form-group">
+                          <input type="number" class="form-control" placeholder="Номер телефона">
+                        </div>
+                        <div class="form-group">
+                          <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="e-mail">
+                        </div>
+                        <p>Оплатить онлайн</p>
+                        <button type="submit" class="btn"><img src="{% static './img/visa.svg' %}"></button>
+                        <button type="submit" class="btn"><img src="{% static './img/mastercard.svg' %}"></button>
+                      </form>
+      
+                    </div>
+                  </div>
+      
+          </div>
+        </div>
+      </div>
+      
+
+      <div>
+        <div id="infoTemplate">
+          <div id="infoContent">
+            <div class="row">
+      
+              <div class="col-sm-3">
+                <img src="{{ book.img.url }}">
+              <div class="rater-large-step mar_5"></div>
+              <span >97</span>
+              </div>
+              <div class="col-sm-9">
+                <p><a href=""> Хаматова</a>, Гордеева</p>
+                <p>{{ book.name }}</p>
+                <nav>
+                  <div class="nav nav-tabs active" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Книга</a>
+                    
+                  </div>
+                </nav>
+                
+                <div class="tab-content" id="nav-tabContent">
+      
+                  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <p><span>Автор: </span>{{ book.author }}</p>
+                    <p><span>Редактор: </span>{{ book.id_Edition }}</p>
+                    <p><span>Издательство: </span>{{ book.publishing_house }}</p>
+                    <br>
+                    <p><span>ID товара: </span>{{ book.id }}</p>
+                    <p><span>ISBN: </span>{{ book.isnb }}</p>
+                    <p><span>Страниц: </span>{{ book.number_of_page }}</p>
+                    <p><span>Масса: </span>{{ book.weight }}</p>
+                    <p><span>Размеры: </span>{{ book.dimensions }}</p>
+
+                    {% if book.main_mp3 %}
+                    <audio class="audiojs">
+                    <source  src="{{ book.main_mp3.url }}" type="audio/mp3">
+                    </audio> 
+                    {% else %}
+
+                     {% endif %}
+                       
+                    <span>Цена {{ book.price }}сум</span>
+                    <div class="for_btns"> 
+                      <a href="{% static './pdf/pdf.html' %}" target="_blanc"><button >Читать фрагиент</button></a>
+                      <button  type="button"  data-toggle="modal" data-target="#exampleModalDostavka">Купить с доставкой</button>
+                    </div>
+                    <a  id="aPodelitsyaSot" style="cursor: pointer;">Поделитьса
+                    </a>
+                      <div id="sotSet" style="visibility: hidden;">
+                        <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+                        <script src="//yastatic.net/share2/share.js"></script>
+                        <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,twitter,tumblr,viber,whatsapp,skype,telegram" data-limit="3">
+                        </div>
+                      </div>
+                  </div>
+                   <script type="text/javascript">
+                      var i = 0;
+                      $('#aPodelitsyaSot').click(function(){
+                        if(i == 0){
+                          $('#sotSet').css({'visibility':'visible'});
+                          i = 1;
+                        }
+                        else{
+                          $('#sotSet').css({'visibility':'hidden'});
+                          i = 0;
+                        }
+                      })
+
+                   </script>
+                 
+      
+              
+      
+                </div>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+          <div class="info_about">
+          <div class="container">
+            
+           
+              
+                  <style type="text/css">
+                  .control-label{
+                    display: none;
+                  }
+                  .otpravit{
+                    margin-top: 5px;
+                    border: 1px solid #EFEFF2;
+                    border-radius: 4px;
+                    width: 100px;
+                    height: 30px;
+                    font-size: 13px;
+                    background: #F9F9FC!important;
+                    color: rgba(0,0,0,.75);
+                  }
+                  .otpravit:hover{
+                    border: 1px solid #EBE8E8 !important;
+
+                  }
+                  .textarea{
+                    width: 100%;
+                    min-width: 240px;
+                    border: 2px solid #b6c1c6;
+                    border-radius: 4px;
+                    height: 62px !important;
+                  }
+                      </style>
+            <div class="comment">
+              <div class="about_the_book">
+              <p>Описание книги</p>
+              <p>
+                {{ book.description }}  
+              </p>
+             
+            </div>
+      
+              <section class="SectionContent" >
+                  <div class="media">
+                  <div class="media-body">
+                    <form method="POST">
+                      {% csrf_token %}
+                      {{ form|crispy }}
+                      <button type="submit" class="otpravit">Отправить</button>
+                    </form>
+                  </div>
+                </div>
+  
+            {% for post in comments %}
+                <div class="media mt-2">
+                  {% if post.avtor.profile.img %}
+                  <img src="{{ post.avtor.profile.img.url }}" class="mr-3" style="border-radius: 2px;" alt="...">
+                  {% else %}
+                  <img src="/media/default.jpg" class="mr-3" alt="...">
+                  {% endif %}
+                  <div class="media-body">
+                    <p class="mt-0">{{ post.avtor }} <span> {{ post.date|date:"d E Y" }}</span></p>
+                    {{ post.text }}
+                    <p class="sendTo">{{ post.id }} <img src="{% static './img/rectangleIL.svg' %}"> | <img src="{% static './img/rectangleIR.svg' %}"> • Ответ • <a  id="aPodelitsyaSot" style="cursor: pointer;">Поделитьса
+                    </a><img src="{% static 'img/rectangleIRR.svg' %}"></p>
+                  </div>
+                </div>
+             {% endfor %}
+
+     
+              </section>
+                <div class="show_comments" style="text-align: center;font-size: 15px;cursor: pointer;">
+                 <p>ещё...</p>
+                </div>
+      
+            </div>
+          </div>
+      
+      
+        </div>
+      </style>
+      <script type="text/javascript">
+        audiojs.events.ready(function() {
+          var as = audiojs.createAll();
+        });
+      </script>
+      <div class="container">
+        <h5>{{ book.genre }}</h5>
+      </div>
+      <div class="row middle-content">
+         {% for post in books %}
+            <div class="middle-content-element">
+              <div class="middle-content-in">
+                <img src="{{ post.img.url }}">
+                <div class="mid-con-el-text">
+                  <p>{{ post.name }}</p>
+                  <p><span>{{ post.author }}</span></p>
+                  <button  onclick="location.href='/count/{{ post.id }}'">Купить</button> <span class="i">{{ post.price }} сум</span>
+                  <div class="mar_5 star-rating star-rating-mini-dis">
+                      <div class="star-value star-value-25"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="myFooter">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-sm-2">
+        <p></p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <p>Сотрудничество</p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <p>Что почитать?</p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2"></div>
+
+      <div class="col-sm-2">
+        <p></p>
+        <a href="#"><img src="{% static 'img/playmarket.svg' %}"></a>
+      </div>
+
+      <div class="col-sm-2">
+        <p></p>
+        <a href="#"><img src="{% static 'img/appstore.svg' %}"></a>
+      </div>
+
+      <!--         new        -->
+
+      <div class="col-sm-2"></div>
+
+      <div class="col-sm-2">
+        <p>Помощь</p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <p>Мы в соцсетях</p>
+        <ul>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Служба поддержки</a></li>
+          <li><a href="#">Возврат</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <p></p>
+        <ul>
+          <li><a href="#">Вопрос ответ</a></li>
+          <li><a href="#">Напишите нам</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2"></div>
+
+      <div class="col-sm-2">
+        <p></p>
+      </div>
+
+    </div>
+  </div>
+  <footer class="miniFooter"></footer>
+</div>
+<div class="modal fade" id="exampleModalBasket" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+            <div class="myPolite Basket" aria-atomic="true">
+              <div class="myToast BasketIn">
+                  Корзина
+              </div>
+              <div class="myToast2 BasketIn2">
+                <p>В корзине {{ count }} товара</p>
+                <p><span>Общая сумма <br>заказа............
+                <span class="orange">{{ sum.price__sum }}</span></span>
+                  <p class="mar">Оплатить онлайн</p>
+                  <button type="submit" class="btn"><img src="{% static './img/visa.svg' %}"></button>
+                  <button type="submit" class="btn"><img src="{% static './img/mastercard.svg' %}"></button>
+
+              </div>
+            </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+            <div class="myPolite LoginModal" aria-atomic="true">
+              <div class="myToast2 LoginModalIn2">
+                <form>
+                  <div class="form-group">
+                    <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="e-mail">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" placeholder="пароль">
+                  </div>
+                  <div>
+                    <button type="submit" >Войти</button>
+                  </div>
+                </form>
+                <p><a href="">Забыли пароль?</a></p>
+                <p>Авторизация через соц. сети</p>
+                <button class="soc_set"><img src="{% static './img/facebook.svg' %}"></button>
+                <button class="soc_set"><img src="{% static './img/Twitter.svg' %}"></button>
+                <button class="soc_set"><img src="{% static './img/google.svg' %}"></button>
+              </div>
+            </div>
+
+    </div>
+  </div>
+</div>
+
+      <div class="modal fade" id="exampleModalDostavka" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+      
+                  <div class="myPolite myPolite2" aria-atomic="true">
+                    <div class="myToast">
+                        Купить без регистрации
+                    </div>
+                    <div class="myToast2">
+                      <p>ID заказа 12576780</p>
+                      <p><span>Время колоть лёд</span></p>
+                      <p>Сумма заказа <span class="orange">35 000</span></p>
+                      <p class="price_cur">Стоимость доставки<span class="orange">10 000</span></p>
+                      <form class="form_for_p">
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Имя">
+                        </div>
+                        <div class="form-group">
+                          <input type="number" class="form-control" placeholder="Номер телефона">
+                        </div>
+                        <div class="form-group">
+                          <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="e-mail">
+                        </div>
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Адрес доставки*">
+                        </div>
+                        <p>Показать геолокацию</p>
+                        <p class="price_cur2">*Доставка осущестевляется только по горооду Ташкент</p>
+                        <p class="fontS13">Оплатить онлайн</p>
+                        <button type="submit" class="btn"><img src="{% static './img/visa.svg' %}"></button>
+                        <button type="submit" class="btn"><img src="{% static './img/mastercard.svg' %}"></button>
+                      </form>
+      
+                    </div>
+                  </div>
+      
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="modal fade" id="exampleModalAudio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+      
+                  <div class="myPolite" aria-atomic="true">
+                    <div class="myToast">
+                        Купить без регистрации
+                    </div>
+                    <div class="myToast2">
+                      <p>ID заказа 12576780</p>
+                      <p><span>Время колоть лёд</span></p>
+                      <p>Сумма заказа <span class="orange">35 000</span></p>
+                      <form>
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Имя">
+                        </div>
+                        <div class="form-group">
+                          <input type="number" class="form-control" placeholder="Номер телефона">
+                        </div>
+                        <div class="form-group">
+                          <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="e-mail">
+                        </div>
+                        <p>Оплатить онлайн</p>
+                        <button type="submit" class="btn"><img src="{% static './img/visa.svg' %}"></button>
+                        <button type="submit" class="btn"><img src="{% static './img/mastercard.svg' %}"></button>
+                      </form>
+      
+                    </div>
+                  </div>
+      
+          </div>
+        </div>
+      </div>
+      
+{% endblock %}

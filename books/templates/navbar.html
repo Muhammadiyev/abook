@@ -1,0 +1,170 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<div class="row myNav" >
+  <section class="onNav">
+    <div class="container">
+      <div class="join">
+          <ul>
+            <li><div>Uz</div></li>
+            <li class="border_none"><div>Ru</div></li>
+            <li><div class="btn-group" id="mar_0" role="group">
+                <button id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Войти</button>
+                <div class="dropdown-menu position_drop" onclick="event.stopPropagation()" aria-labelledby="btnGroupDrop1">
+                    <div class="flip-container" >
+                        <div class="flipper">
+                          <div class="front">
+                              <div class="myPolite LoginModal"  aria-atomic="true">
+                              <div class="myToast2 LoginModalIn2">
+                              
+                            {% if user.is_authenticated %}
+                              <div class="mt-5"><a style="font-size: 14px; color: #F49342 !important;" href="{% url 'profile' %}">Профиль</a></div>
+                              <div class="mt-1"><a style="font-size: 14px" href="{% url 'exit' %}">Выйти</a></div>
+
+                             {% else %}
+                             <form method="POST">
+                                  <p>Авторизация</p>
+                                  <hr style="margin-top: 1rem; margin-bottom: 1rem; border: 0; border-top: 1px solid rgba(0,0,0,.1);">
+                                  {% csrf_token %}
+                                  {{ form|crispy }}
+                                  <button class="btn btn-outline" style="background-color: transparent;"></button>
+                                </form>
+                              <a class="mt-2" style="font-size: 14px; color: #F49342 !important;" href="{% url 'register' %}">Регистрация</a>
+                               <p class="mt-2"><a href="">Забыли пароль?</a></p>
+                               {% endif %}
+                              <p class="mt-1">Авторизация через соц. сети</p>
+                              <button class="soc_set"><img src="{% static './img/facebook.svg' %}"></button>
+                              <button class="soc_set"><img src="{% static './img/Twitter.svg' %}"></button>
+                              <button class="soc_set"><img src="{% static './img/google.svg' %}"></button>
+                              </div>
+                              </div>     
+                          </div>
+                          <div class="back">
+                            <div class="myPolite LoginModal" aria-atomic="true">
+                              <div class="myToast2 LoginModalIn2">
+                              
+                              <div  class="action-button animate  reg_click">
+                                <p>Войти</p>
+                              </div>
+                              <p><a href="">Забыли пароль?</a></p>
+                              <p>Авторизация через соц. сети</p>
+                              <button class="soc_set"><img src="{% static './img/facebook.svg' %}"></button>
+                              <button class="soc_set"><img src="{% static './img/Twitter.svg' %}"></button>
+                              <button class="soc_set"><img src="{% static './img/google.svg' %}"></button>
+                             </div>
+                             </div>
+                          </div>
+                        </div>
+                      </div>
+
+                       
+                      </div>
+
+                  </div> 
+              </li>
+            <li id="mar_pad1">
+                <div class="btn-group" id="mar_0" role="group">
+                <button id="btnGroupDrop2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><div><img src="{% static 'img/korzinaTsvg.svg' %}">Корзинка <div class="count">{% csrf_token %}
+                  <span>
+                {{ count }}
+                </span>
+              </div>
+            </div>
+          </button>
+
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+                        <div class="myPolite Basket" aria-atomic="true">
+                          <div class="myToast BasketIn">
+                              Корзина
+                          </div>
+                          <div class="myToast2 BasketIn2">
+                            <p>В корзине {{ count }} товара</p>
+                            <p><span>Общая сумма <br>заказа............
+                            <span class="orange">{{ sum.price__sum }}</span></span>
+                              <p class="mar">Оплатить онлайн</p>
+                              <button type="submit" class="btn"><img class="k_23" src="{% static './img/visa.svg' %}"></button>
+                              <button type="submit" class="btn"><img class="k_23" src="{% static './img/mastercard.svg' %}"></button>
+
+                          </div>
+                        </div>
+
+                </div>
+
+              </div>
+
+
+            </li>
+          </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="row mainNav">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg mainNav navbar-dark">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="navbar-brand" href="#">
+              <a href="{% url 'home' %}">
+                <img class="imgLogo" src="{% static 'img/Logo.svg' %}">
+                <img class="imgLogoBook" src="{% static 'img/LogoName.svg' %}">
+              </a>
+              <div class="frst-div">Жанры
+                <div class="dropDiv" >
+                    <a href=""><div>От А до Г<img src="{% static 'img/arrowR.png' %}"></div></a>
+                    <a href=""><div>От Д до И<img src="{% static 'img/arrowR.png' %}"></div></a>
+                    <a href=""><div>От Й до М<img src="{% static 'img/arrowR.png' %}"></div></a>
+                    <a href=""><div>От Н до Р<img src="{% static 'img/arrowR.png' %}"></div></a>
+                    <a href=""><div>От С до Ф<img src="{% static 'img/arrowR.png' %}"></div></a>
+                    <a href=""><div>От Х до Ч<img src="{% static 'img/arrowR.png' %}"></div></a>
+                    <br>
+                  {% for post in genre %}
+
+                   <a href="/genre/{{ post.id }}"><div>{{ post.name }}<img src="{% static 'img/arrowR.png' %}"></div></a>
+
+                   {% endfor %}
+
+                <form>
+                  <p>Год издания</p>
+                  <select class="form-control form-control-sm form_select">
+
+                      <!--    YEARS    -->
+
+                  </select>
+                </form>
+
+                </div>
+              </div>
+            </div>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <div class="w-100 ">
+              <form class="input-group mb-3" method="GET" action="{% url 'search' %}">
+                <input type="text" placeholder="Поиск..." class="form-control" name="search">
+                <div class="input-group-append">
+                  <span class="input-group-text"><button><img src="{% static 'img/mark-search.png' %}"></button></span>
+                </div>
+              </form>
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                  <a class="nav-link" href="">Новости<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Популярное</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'home' %}">Новинки</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Скоро</a>
+                </li>
+              </ul>
+              <div id="appendDrop2">
+                
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+  </div>
+
+</div>
